@@ -1,0 +1,41 @@
+// ***** Default *****
+
+$primary: #FACF0F;
+$gray-dark: #5b5b5b; // text color
+$light: #EEEEEE;
+
+// ******************
+
+.link-button:hover {
+    color: $primary !important;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    list-style: none !important;
+    text-decoration: none !important;
+    scroll-behavior: smooth;
+    transition: all 0.1s;
+    color: $gray-dark !important;
+    border: none !important;
+    transition-duration: 500ms;
+}
+
+*:focus {
+    outline: none;
+}
+
+.light-grey-text {
+    color: #6d6d6d !important;
+}
+
+.bg-grey-box {
+    background-color: #E7E7E7 !important;
+}
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+// @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
