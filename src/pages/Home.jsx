@@ -1,24 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CHeading } from '../components/CustomTag'
-import { Github, Instagram, LinkedIn, Tweeter } from '../images/SVG'
+import { Github, Instagram, LinkedIn, Skype, Tweeter } from '../images/SVG'
 
 const Home = ({ projects }) => {
 
   const navigate = useNavigate();
 
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
   const skills = [
-    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Node.Js', 'MongoDB',
-    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Node.Js', 'MongoDB'
+    'HTML', 'CSS', 'SASS', 'JavaScript', 'TypeScript', 'React.Js', 'React Native', 'Node.Js', 'Express', 'PostgreSQL', 'MongoDB', 'Git', 'Github',
   ]
 
   const openProject = (id) => {
     navigate(`/project/${id}`);
   }
 
+  const onSubmit = () => {
+    setForm({
+      name: '',
+      email: '',
+      message: ''
+    });
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(projects);
   }, [])
 
 
@@ -44,14 +56,15 @@ const Home = ({ projects }) => {
       }} className='bg-dark vh-100 position-relative d-flex align-items-center'>
         <div className='h-100 w-100 d-flex flex-column justify-content-center align-items-center'>
           <p className='h1 text-black fw-bold display-4'>HEY, I'M RAJ MANGUKIYA</p>
-          <p style={{ width: '60%' }} className='fs-5 text-center my-4'>A Frontend focused Web Developer building the Frontend of Websites and Web Applications that leads to the success of the overall product</p>
+          <p style={{ width: '60%' }} className='fs-5 text-center my-4'>A fullstack developer who can create fullstack web application and mobile application that leads bussiness to the success in digital world.</p>
           <a href='#projects' style={{ padding: '18px 80px' }} className='bg-primary shadow-lg text-black rounded-2 fw-bold mt-3'>PROJECTS</a>
         </div>
         <div style={{ borderRadius: '0px 5px 5px 0px', height: '230px' }} className='bg-white position-absolute start-0 d-flex flex-column justify-content-between p-3 shadow-lg'>
           <LinkedIn width='30' height='30' />
           <Github width='30' height='30' />
-          <Tweeter width='30' height='30' />
+          {/* <Tweeter width='30' height='30' /> */}
           <Instagram width='30' height='30' />
+          <Skype width='30' height='30' />
         </div>
       </div>
 
@@ -63,8 +76,8 @@ const Home = ({ projects }) => {
         <div style={{ padding: '100px 150px' }} className='d-flex justify-content-between'>
           <div style={{ width: '45%' }} className='d-flex flex-column align-items-center'>
             <h1 className='fw-bold fs-2 mb-5'>Get to know me!</h1>
-            <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>I'm a Frontend Web Developer building the Front-end of Websites and Web Applications that leads to the success of the overall product. Check out some of my work in the Projects section.</p>
-            <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>I also like sharing content related to the stuff that I have learned over the years in Web Development so it can help other people of the Dev Community. Feel free to Connect or Follow me on my Linkedin where I post useful content related to Web Development and Programming</p>
+            <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>I'm a fullstack developer who can create fullstack web application and mobile application that leads bussiness to the success in digital world.  Check out some of my work in the Projects section.</p>
+            <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>I have done 2 internships where i leraned to make an industry level product, I do also have experience of freelance work for international client.</p>
             <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.</p>
             <a href='#contact' className='bg-primary px-5 py-3 rounded-1 fw-bold shadow mt-3'>CONTACT</a>
           </div>
@@ -101,15 +114,15 @@ const Home = ({ projects }) => {
                     <p style={{ fontSize: '17px' }} className='light-grey-text lh-lg'>{project.intro}</p>
                     <button onClick={() => openProject(i)} className='bg-primary px-5 py-3 rounded-1 fw-bold shadow mt-3 align-self-start text-black'>EXPLORE</button>
                   </div>
-                  <div style={{ width: '45%', height: '400px' }} className='bg-grey-box rounded-3 shadow-sm'>
-
+                  <div style={{ width: '45%', height: '400px' }} >
+                    <img className='w-100 rounded-3' src={projects[i].thumbNail} />
                   </div>
                 </div>
               )
               else return (
                 <div key={i} style={{ marginBottom: '150px' }} className='d-flex justify-content-between'>
-                  <div style={{ width: '45%', height: '400px' }} className='bg-grey-box rounded-3 shadow-sm'>
-
+                  <div style={{ width: '45%', height: '400px' }} >
+                    <img className='w-100 rounded-3' src={projects[i].thumbNail} />
                   </div>
                   <div style={{ width: '35%' }} className='d-flex flex-column justify-content-center'>
                     <h1 className='fw-bold fs-2 mb-3'>{project.title}</h1>
@@ -133,17 +146,26 @@ const Home = ({ projects }) => {
         <div style={{ margin: '100px 0px' }} className='bg-white w-50 p-5 rounded-2 shadow-lg d-flex flex-column align-items-center'>
           <div className='d-flex flex-column mb-5 w-100'>
             <label className='mb-2' for="name">Name</label>
-            <input type="name" id="name" placeholder="Enter your name" className='bg-grey-box p-3 rounded-1' />
+            <input type="name" id="name" onChange={(e) => setForm((prev) => ({
+              ...prev,
+              name: e.target.value
+            }))} value={form.name} placeholder="Enter your name" className='bg-grey-box p-3 rounded-1' />
           </div>
           <div className='d-flex flex-column mb-5 w-100'>
             <label className='mb-2' for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" className='bg-grey-box p-3 rounded-1' />
+            <input type="email" id="email" onChange={(e) => setForm((prev) => ({
+              ...prev,
+              email: e.target.value
+            }))} value={form.email} placeholder="Enter your email" className='bg-grey-box p-3 rounded-1' />
           </div>
           <div className='d-flex flex-column mb-5 w-100'>
             <label className='mb-2' for="message">Message</label>
-            <textarea style={{ resize: 'none' }} class="bg-grey-box p-3 rounded-1" placeholder="Enter your message" id="message" rows="8"></textarea>
+            <textarea style={{ resize: 'none' }} class="bg-grey-box p-3 rounded-1" onChange={(e) => setForm((prev) => ({
+              ...prev,
+              message: e.target.value
+            }))} value={form.message} placeholder="Enter your message" id="message" rows="8"></textarea>
           </div>
-          <button className='bg-primary px-5 py-3 rounded-1 fw-bold shadow mt-3 text-black'>SUBMIT</button>
+          <button onClick={onSubmit} className='bg-primary px-5 py-3 rounded-1 fw-bold shadow mt-3 text-black'>SUBMIT</button>
         </div>
       </div>
 
@@ -157,12 +179,13 @@ const Home = ({ projects }) => {
           </div>
           <div className='w-25'>
             <p className='text-white fw-bold fs-4'>SOCIAL</p>
-            <div className='w-100 bg-grey-box p-4 d-flex '>
+            <div className='w-100 bg-grey-box p-4 d-flex rounded-1'>
               <div style={{ height: '30px' }} className='d-flex w-100 justify-content-between'>
                 <LinkedIn width='30' height='30' />
                 <Github width='30' height='30' />
-                <Tweeter width='30' height='30' />
+                {/* <Tweeter width='30' height='30' /> */}
                 <Instagram width='30' height='30' />
+                <Skype width='30' height='30' />
               </div>
             </div>
           </div>

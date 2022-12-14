@@ -4,7 +4,7 @@ import CarouselComponent from '../components/Carousel';
 import { CHeading } from '../components/CustomTag';
 import { Github, Instagram, LinkedIn, Tweeter } from '../images/SVG';
 
-const Project = ({projects}) => {
+const Project = ({ projects }) => {
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -12,8 +12,9 @@ const Project = ({projects}) => {
     const goBack = () => navigate('/');
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-      }, [])
+        // window.scrollTo(0, 0);
+        console.log(projects[id].image);
+    }, [])
 
     return (
         <div>
@@ -22,15 +23,24 @@ const Project = ({projects}) => {
             }} className='bg-dark vh-100 position-relative d-flex flex-column justify-content-center align-items-center'>
                 <p className='h1 text-black fw-bold display-4'>{projects[id].title}</p>
                 <p style={{ width: '60%' }} className='fs-5 text-center my-4'>{projects[id].intro}</p>
-                <CarouselComponent />
+                {
+                    projects[id].liveLink
+                        ?
+                        <a href='https://chatmake.onrender.com/' target='_blank' style={{ padding: '18px 80px' }} className='bg-primary shadow-lg text-black rounded-2 fw-bold mt-3'>LIVE LINK</a>
+                        :
+                        <></>
+                }
             </div>
+            <img className='w-100' src={projects[id].image} />
 
             <div id='projects' className='min-vh-100 bg-white d-flex flex-column align-items-center p-5'>
                 <div className='w-50 mb-5'>
                     <h1 className='fw-bold text-black fs-2 mb-3'>Project Overview</h1>
-                    <p className='light-grey-text fs-5 mt-5'>Yubter is a platform for people to join the community of their favorite youtube channel. I had an idea and I thought it will be cool and helpful for Youtube users to have a place where they can chat with other like-minded people who follow the same Youtube channel as them and build a stronger community.</p>
-                    <p className='light-grey-text fs-5 mt-4'>I took inspiration from other similar platforms like Discord, Slack, etc. which are similar in terms of having a place for people of certain communities and providing them a space to communicate and meet like-minded people of the same community.</p>
-                    <p className='light-grey-text fs-5 mt-4'>Feel free to check out the Project by visiting the Live Link.</p>
+                    {
+                        projects[id].description.map(des => (
+                            <p className='light-grey-text fs-5 mt-5'>{des}</p>
+                        ))
+                    }
                 </div>
 
                 <div className='w-50 mt-5'>
@@ -49,7 +59,7 @@ const Project = ({projects}) => {
                     </div>
                 </div>
 
-                <button className='bg-white border border-2 border-primary rounded-1 text-primary shadow-sm px-5 py-3 mt-5' onClick={goBack}>Go Back</button>
+                <div onClick={goBack}  style={{ padding: '18px 80px', cursor: 'pointer' }} className='bg-primary shadow-lg text-black rounded-2 fw-bold mt-3'>GO BACK</div>
             </div>
 
 
@@ -77,6 +87,6 @@ const Project = ({projects}) => {
             </div>
         </div>
     )
-    }
+}
 
-    export default Project
+export default Project

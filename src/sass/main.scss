@@ -28,6 +28,10 @@ $light: #EEEEEE;
     outline: none;
 }
 
+body {
+    overflow: overlay;
+}
+
 .light-grey-text {
     color: #6d6d6d !important;
 }
@@ -35,6 +39,27 @@ $light: #EEEEEE;
 .bg-grey-box {
     background-color: #E7E7E7 !important;
 }
+
+.carousel-image {
+    height: 500px;
+    border-radius: 5px
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 100px;
+  }
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 // @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');

@@ -21,12 +21,37 @@
   outline: none;
 }
 
+body {
+  overflow: overlay;
+}
+
 .light-grey-text {
   color: #6d6d6d !important;
 }
 
 .bg-grey-box {
   background-color: #E7E7E7 !important;
+}
+
+.carousel-image {
+  height: 500px;
+  border-radius: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FACF0F;
+  border-radius: 100px;
 }
 
 /*!
