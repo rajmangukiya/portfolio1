@@ -62,9 +62,9 @@ const Home = ({ projects }) => {
         <div style={{ borderRadius: '0px 5px 5px 0px', height: '230px' }} className='bg-white position-absolute start-0 d-flex flex-column justify-content-between p-3 shadow-lg'>
           <LinkedIn width='30' height='30' />
           <Github width='30' height='30' />
-          {/* <Tweeter width='30' height='30' /> */}
+          <Tweeter width='30' height='30' />
           <Instagram width='30' height='30' />
-          <Skype width='30' height='30' />
+          {/* <Skype width='30' height='30' /> */}
         </div>
       </div>
 
@@ -175,7 +175,8 @@ const Home = ({ projects }) => {
         <div className='w-100 d-flex justify-content-between'>
           <div className='w-50'>
             <p className='text-white fw-bold fs-4'>RAJ MANGUKIYA</p>
-            <p className='text-light'>A Frontend focused Web Developer building the Frontend of Websites and Web Applications that leads to the success of the overall product</p>
+            <p className='text-light'>live:.cid.427e58067e903920</p>
+            <p className='text-light'>rajmangukiya00@gmail.com</p>
           </div>
           <div className='w-25'>
             <p className='text-white fw-bold fs-4'>SOCIAL</p>
@@ -183,9 +184,9 @@ const Home = ({ projects }) => {
               <div style={{ height: '30px' }} className='d-flex w-100 justify-content-between'>
                 <LinkedIn width='30' height='30' />
                 <Github width='30' height='30' />
-                {/* <Tweeter width='30' height='30' /> */}
+                <Tweeter width='30' height='30' />
                 <Instagram width='30' height='30' />
-                <Skype width='30' height='30' />
+                {/* <Skype width='30' height='30' /> */}
               </div>
             </div>
           </div>
